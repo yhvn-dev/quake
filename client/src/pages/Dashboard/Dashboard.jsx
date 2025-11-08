@@ -1,7 +1,9 @@
+// quake/client/src/pages/Dashboard/Dashboard.jsx
 import { Outlet, Navigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import DashboardSidebar from "../../components/DashboardSidebar";
 import Navbar from "../../components/Navbar";
+import EarthquakeAlertStatus from "../../components/EarthquakeAlertStatus";
 
 function Dashboard() {
   const { isAuthenticated, loading } = useAuth();
@@ -29,6 +31,9 @@ function Dashboard() {
           <Outlet />
         </main>
       </div>
+
+      {/* Earthquake Alert Status Widget */}
+      <EarthquakeAlertStatus />
     </div>
   );
 }

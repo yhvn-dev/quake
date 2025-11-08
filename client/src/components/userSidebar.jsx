@@ -5,7 +5,7 @@ function Sidebar() {
   return (
     <aside className="w-full h-full column col-start-1 col-end-1 row-start-1 row-span-full shadow-lg ">
       <div className="w-full h-[5%] center">
-        <p>Logo</p>
+        <p>LOMI-LIN-DOL</p>
       </div>
 
       <div className="w-full h-full flex items-center justify-start flex-col  my-4">

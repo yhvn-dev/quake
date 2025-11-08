@@ -1,12 +1,10 @@
+// quake/server/routes/eqRoutes.js
 import express from "express";
-import * as eqController from "../controller/eqController.js"
+import * as eqController from "../controller/eqController.js";
 
-const router = express.Router()
+const router = express.Router();
 
+router.get("/earthquakes/refresh", eqController.eqRefresh);
+router.get("/earthquakes", eqController.eqEarthquake);
 
-router.get("/earthquakes/refresh",eqController.eqRefresh)
-router.get("/earthquakes",eqController.eqEarthquake)
-
-
-
-export default router
+export default router;

@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { login, verifyLoginCode, resendVerification } from "../../services/userService";
-import {Mail,Lock} from "lucide-react"
+import {
+  login,
+  verifyLoginCode,
+  resendVerification,
+} from "../../services/userService";
+import { Mail, Lock } from "lucide-react";
 
 function Login() {
   const navigate = useNavigate();
@@ -26,7 +30,7 @@ function Login() {
       [e.target.name]: e.target.value,
     });
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -52,7 +56,6 @@ function Login() {
         setShowModal(true);
         setInfoMessage("A verification code was sent to your email.");
       } else {
-        
         // If server returns token directly (fallback), save and redirect
         localStorage.setItem("token", response.token);
         localStorage.setItem("user", JSON.stringify(response.user));
@@ -122,7 +125,6 @@ function Login() {
 
         <form className="h-full" onSubmit={handleSubmit}>
           <div className="mb-4 input-box relative">
-           
             <input
               type="email"
               name="email"
@@ -132,14 +134,13 @@ function Login() {
               className="w-full px-3 py-2 border border-gray-300  rounded-xl focus:outline-[var(--purpluish)]"
               placeholder=""
             />
-             <label className="absolute left-4 top-2  text-[var(--metal-dark4)] pointer-events-none bg-[var(--main-white)] px-1">
+            <label className="absolute left-4 top-2  text-[var(--metal-dark4)] pointer-events-none bg-[var(--main-white)] px-1">
               Email
             </label>
-            <Mail size={18} className="absolute right-4 top-2"/>
+            <Mail size={18} className="absolute right-4 top-2" />
           </div>
 
           <div className="mb-6 input-box relative">
-            
             <input
               type="password"
               name="password"
@@ -149,11 +150,11 @@ function Login() {
               className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-[var(--main-white)] focus:outline-[var(--purpluish)] "
               placeholder=""
             />
-      
+
             <label className="absolute left-4 top-2  text-[var(--metal-dark4)] pointer-events-none bg-[var(--main-white)] px-1">
               Password
-          </label>
-                  <Lock size={18} className="absolute right-4 top-2" />
+            </label>
+            <Lock size={18} className="absolute right-4 top-2" />
           </div>
 
           <div className="mb-4 text-right">
@@ -177,7 +178,10 @@ function Login() {
 
         <p className="mt-4 text-center text-gray-600 text-sm">
           Don't have an account?{" "}
-          <Link to="/signup" className="text-[var(--purpluish)]  hover:underline">
+          <Link
+            to="/signup"
+            className="text-[var(--purpluish)]  hover:underline"
+          >
             Sign Up
           </Link>
         </p>
@@ -231,7 +235,6 @@ function Login() {
               <button
                 type="button"
                 onClick={() => {
-                  // allow user to cancel verification -> clear token + modal
                   setShowModal(false);
                   setLoginToken("");
                   setCodeInput("");

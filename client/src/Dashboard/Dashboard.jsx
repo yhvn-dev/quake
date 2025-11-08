@@ -1,4 +1,4 @@
-// eq/client/src/pages/Dashboard/Dashboard.jsx
+// quake/client/src/pages/Dashboard/Dashboard.jsx
 import { Outlet, Navigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import DashboardSidebar from "../../components/DashboardSidebar";

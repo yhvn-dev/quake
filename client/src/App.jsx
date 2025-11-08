@@ -1,5 +1,8 @@
+// quake/client/src/App.jsx
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
+import { EarthquakeAlertProvider } from "./context/EarthquakeAlertContext";
+import { Toaster } from "react-hot-toast";
 import Signup from "./pages/Auth/Signup";
 import Login from "./pages/Auth/Login";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
@@ -12,25 +15,41 @@ import Report from "./pages/Dashboard/Report";
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Feed />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+      <EarthquakeAlertProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Feed />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
 
-          {/* Dashboard routes with nested routes */}
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route
-              index
-              element={<Navigate to="/dashboard/report" replace />}
-            />
-            <Route path="report" element={<Report />} />
-            <Route path="settings" element={<Settings />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            {/* Dashboard routes with nested routes */}
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route
+                index
+                element={<Navigate to="/dashboard/report" replace />}
+              />
+              <Route path="report" element={<Report />} />
+              <Route path="settings" element={<Settings />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+
+        {/* Toast notifications */}
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          gutter={8}
+          toastOptions={{
+            duration: 5000,
+            style: {
+              background: "#363636",
+              color: "#fff",
+            },
+          }}
+        />
+      </EarthquakeAlertProvider>
     </AuthProvider>
   );
 }

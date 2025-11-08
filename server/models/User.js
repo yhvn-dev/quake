@@ -1,3 +1,4 @@
+// quake/server/models/User.js
 import db from "../config/database.js";
 import bcrypt from "bcrypt";
 

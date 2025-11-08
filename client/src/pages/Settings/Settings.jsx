@@ -36,7 +36,6 @@ function Settings() {
         location: user.location || "",
       }));
 
-      // Parse existing location if available
       if (user.location) {
         const parts = user.location.split(", ");
         if (parts.length === 2) {
@@ -98,7 +97,7 @@ function Settings() {
     setLoading(true);
     setMessage({ type: "", text: "" });
 
-    // Validate passwords if attempting to change
+    // Validate passwords
     if (formData.newPassword) {
       if (!formData.currentPassword) {
         setMessage({
@@ -139,10 +138,8 @@ function Settings() {
 
       setMessage({ type: "success", text: "Profile updated successfully" });
 
-      // Update auth context with new user data
       await checkAuth();
 
-      // Clear password fields
       setFormData((prev) => ({
         ...prev,
         currentPassword: "",

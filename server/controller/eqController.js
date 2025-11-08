@@ -6,7 +6,6 @@ import https from "https";
 import fs from "fs";
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 const BASE_URL = "https://earthquake.phivolcs.dost.gov.ph/";
 
 app.use(cors());
@@ -24,11 +23,9 @@ let cachedData = null;
 let lastFetchTime = null;
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
-// Function to fetch and parse PHIVOLCS data
+// Function to fetch and alayze phivolcs data
 async function fetchEarthquakeData() {
   try {
-    console.log("Fetching data from PHIVOLCS...");
-
     const response = await axiosInstance.get(BASE_URL, {
       headers: {
         "User-Agent":
@@ -40,18 +37,14 @@ async function fetchEarthquakeData() {
       },
     });
 
-    console.log("Successfully fetched HTML, parsing...");
-
     // Save HTML for debugging
     fs.writeFileSync("debug_response.html", response.data);
-    console.log("Saved HTML to debug_response.html");
 
     const $ = cheerio.load(response.data);
     const earthquakes = [];
 
     // Find all tables
     const allTables = $("table.MsoNormalTable");
-    console.log(`Found ${allTables.length} MsoNormalTable(s)`);
 
     // Find the table with earthquake data (has Date-Time header)
     let dataTable = null;
@@ -59,7 +52,6 @@ async function fetchEarthquakeData() {
       const text = $(table).text();
       if (text.includes("Date - Time") || text.includes("Philippine Time")) {
         dataTable = $(table);
-        console.log(`Found data table at index ${i}`);
         return false; // break
       }
     });
@@ -70,14 +62,12 @@ async function fetchEarthquakeData() {
 
     // Get all rows from the data table
     const rows = dataTable.find("tr");
-    console.log(`Found ${rows.length} rows in data table`);
 
     // Process each row
     let dataCount = 0;
     rows.each((index, row) => {
       const cells = $(row).find("td");
 
-      // Skip if not enough cells (header row or empty row)
       if (cells.length < 6) {
         return;
       }
@@ -90,7 +80,7 @@ async function fetchEarthquakeData() {
       const magnitudeCell = $(cells[4]);
       const locationCell = $(cells[5]);
 
-      // Get the date/time text (may be in a link)
+      // Get the date/time text
       let dateTime = dateTimeCell.find("a").text().trim();
       const href = dateTimeCell.find("a").attr("href");
       let detailLink = null;
@@ -134,16 +124,7 @@ async function fetchEarthquakeData() {
       }
     });
 
-    console.log(`Successfully parsed ${earthquakes.length} earthquakes`);
-
-    // Log first few for verification
-    if (earthquakes.length > 0) {
-      console.log("First earthquake:", JSON.stringify(earthquakes[0], null, 2));
-      console.log(
-        "Last earthquake:",
-        JSON.stringify(earthquakes[earthquakes.length - 1], null, 2)
-      );
-    }
+    console.log(`Successfully alalyse ${earthquakes.length} earthquakes`);
 
     if (earthquakes.length === 0) {
       throw new Error("No earthquake data found.");
@@ -176,17 +157,15 @@ export const eqRefresh = async (req, res) => {
     res.status(500).json({
       success: false,
       error: error.message,
-      hint: "Check server console and debug_response.html file for more details",
+      hint: "Check console for more details",
     });
   }
 };
 
 export const eqEarthquake = async (req, res) => {
   try {
-    // Check if we have cached data and it's still fresh
     const now = Date.now();
     if (cachedData && lastFetchTime && now - lastFetchTime < CACHE_DURATION) {
-      console.log("Returning cached data");
       return res.json({
         success: true,
         data: cachedData,
@@ -214,8 +193,8 @@ export const eqEarthquake = async (req, res) => {
     res.status(500).json({
       success: false,
       error: error.message,
-      details: "Failed to fetch earthquake data from PHIVOLCS",
-      hint: "Check server console and debug_response.html file for more details",
+      details: "Failed to fetch earthquake data",
+      hint: "Check console file for more details",
     });
   }
 };

@@ -1,4 +1,3 @@
-// eq/server/controller/authController.js
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import axios from "axios";
@@ -27,7 +26,6 @@ dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
-// reCAPTCHA verify
 const verifyRecaptcha = async (token) => {
   try {
     const res = await axios.post(
@@ -282,14 +280,13 @@ export const updateProfile = async (req, res) => {
     const decoded = jwt.verify(token, JWT_SECRET);
     const { name, email, location, currentPassword, newPassword } = req.body;
 
-    // Validate inputs
     if (name && !validateName(name))
       return res.status(400).json({ message: "Invalid name" });
 
     if (email && !validateEmail(email))
       return res.status(400).json({ message: "Invalid email" });
 
-    // Check if email is already used by another user
+    // Check if email is already used
     if (email) {
       const existingUser = await findUserByEmail(email);
       if (existingUser && existingUser.id !== decoded.userId) {
