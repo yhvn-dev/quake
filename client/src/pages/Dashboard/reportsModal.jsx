@@ -81,10 +81,10 @@ const [formData,setFormData] = useState({
 
           <main className={`container column-t z-10 w-[90%] md:w-[80%] lg:w-[50%] h-[50%] ${mode === "delete" ? "h-[300px]" : "h-[50%]"} bg-white rounded-lg shadow-lg overflow-hidden`}>
 
-            <div className={`flex items-center justify-between w-full h-20 overflow-hidden
+            <div className={`modal-header flex items-center justify-between w-full h-20 overflow-hidden
             ${mode === "update" ? "bg-blue-100" : mode === "insert" ? "bg-gray-100" : "bg-red-100"} `}>
-                <p className="mx-4 text-2xl">{mode === "insert" ? "Insert Eearthquake Reports" : mode === "update" ? "Update Earthquake Reports" : "Delete Earthquake Reports User"}</p> 
-                <button className="mx-4 rounded-2xl px-4 py-2 bg-gray-100 shadow-lg  cursor-pointer" onClick={() => isOpen(false)}>X</button>
+                <p className="modal-text mx-4 text-2xl">{mode === "insert" ? "Insert Eearthquake Reports" : mode === "update" ? "Update Earthquake Reports" : "Delete Earthquake Reports User"}</p> 
+                <button className="mx-4 rounded-2xl hover:bg-[var(--white-blple)] px-4 py-2 bg-gray-100 shadow-lg  cursor-pointer" onClick={() => isOpen(false)}>X</button>
             </div> 
 
             {mode === "delete" ? (
@@ -106,7 +106,7 @@ const [formData,setFormData] = useState({
                             <input name="report_title" onChange={handleChange} value={formData.report_title} 
                             className="text-sm rounded-lg border-1 border-gray-500 px-2 py-1" 
                             placeholder="" type="text"/>     
-                             <label className="absolute left-4 top-2  text-[var(--metal-dark4)] pointer-events-none bg-white px-2">
+                             <label className="absolute left-4 top-1  text-sm text-[var(--metal-dark4)] pointer-events-none bg-white px-2">
                                Report Title
                             </label>          
                         </div>
@@ -114,9 +114,9 @@ const [formData,setFormData] = useState({
                         
                         <div className="input-box column relative">
                         <input name="location" onChange={handleChange} value={formData.location} className="text-sm rounded-lg border-1 border-gray-500 px-2 py-1" 
-                                placeholder="location" type="text"/>
-                            <label className="absolute left-4 top-2  text-[var(--metal-dark4)] pointer-events-none bg-white px-2">
-                               Report Title
+                                placeholder="" type="text"/>
+                            <label className="absolute left-4 top-1 text-sm text-[var(--metal-dark4)] pointer-events-none bg-white px-2">
+                                Location
                             </label>      
                         </div>
 
@@ -126,21 +126,20 @@ const [formData,setFormData] = useState({
                   </div>
 
                     <div className="flex items-center justify-evenly flex-col  full ">
-                        <div className="input_box column relative">
+                        <div className="input_box flex items-start justify-start flex-col relative">
+                                  
                             <input type="number" name="magnitude" onChange={handleChange} 
-                            value={formData.magnitude}  className="text-sm rounded-lg border-1 border-gray-500 px-2 py-1" placeholder="" />
-                            <label className="absolute left-4 top-2  text-[var(--metal-dark4)] pointer-events-none bg-white px-2">
-                                Magnitude
-                            </label>                                  
-                
+                            value={formData.magnitude} placeholder="Magnitude"  className="number-input text-sm rounded-lg border-1 border-gray-500 px-2 py-1"  />
+                       
+
                         </div>
 
-                        <div className="input_box column relative">
+                        <div className="input-box column relative">
                             <input name="description" onChange={handleChange}
                              value={formData.description} 
                             className="text-sm rounded-lg border-1 border-gray-500 px-2 py-1" 
-                            placeholder="" type="text"/>  
-                            <label className="absolute left-4 top-2  text-[var(--metal-dark4)] pointer-events-none bg-white px-2">
+                            placeholder=" " type="text"/>  
+                            <label className="absolute left-4 top-1 text-sm text-[var(--metal-dark4)] pointer-events-none bg-white px-2">
                                Description
                             </label>           
                         </div>

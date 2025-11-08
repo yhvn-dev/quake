@@ -38,6 +38,15 @@ export const insertReports = async (reportData) =>{
 }
 
 
+export const countAllReports = async() =>{
+    try {
+        const  [rows] = await db.query("SELECT COUNT(*) AS total_reports FROM reports");
+        return rows[0];
+    } catch (err) {
+        console.log(`MODELS: Error Counting Reports ${err}`)
+    }
+}
+
 export const updateReports = async (reportData,report_id) =>{
     
     const {user_id,location,magnitude,description} = reportData

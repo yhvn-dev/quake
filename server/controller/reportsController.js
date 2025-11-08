@@ -21,6 +21,31 @@ export const selectReports = async (req,res) =>{
 
 
 
+export const getReportsCount = async (req,res) =>{
+  try{
+
+    const counts = await reportsModel.countAllReports()
+    console.log(counts)
+    
+    
+    res.json({
+        success: true,
+        data:counts,
+        message: "Count Sucessfull!",
+      });
+      
+    console.log(counts)
+
+  }catch(error){
+     res.status(500).json({
+      success: false,
+      error: error.message,
+      hint: "Check Controller or Models for more details",
+    });
+  }
+}
+
+
 
 export const selectReport = async (req,res) =>{
   try {

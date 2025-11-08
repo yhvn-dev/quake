@@ -104,11 +104,17 @@
   font-family: "Poppins";
   src: url("./assets/Fonts/Poppins-Regular.ttf");
 }
+@font-face {
+  font-family: "Mokoto";
+  src: url("./assets/Fonts/Mokoto\ Demo.ttf");
+}
+
 
 
 * {
   font-family: "Poppins";
 }
+
 
 .center {
   @apply flex items-center justify-center;
@@ -129,6 +135,7 @@
   @apply flex items-start justify-end;
 }
 
+
 .column {
   @apply flex items-center justify-center flex-col;
 }
@@ -141,6 +148,7 @@
 .full {
   @apply w-full h-full;
 }
+
 
 .input-box label {
   transition: 0.5s ease;
@@ -161,3 +169,7 @@
 .eq-table tr:nth-child(even){
   @apply bg-[var(--gainsbro)]
 } 
+
+.logo-text{
+  font-family: "Mokoto";
+}

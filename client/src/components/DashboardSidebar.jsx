@@ -18,7 +18,7 @@ function DashboardSidebar() {
       <div className="p-6 center border-b border-[var(--moon-phases-c)]">
 
         <div>
-          <h2 className="text-xl text-start font-bold my-2 text-gray-800">Dashboard</h2>
+          <h2 className="logo-text text-xl text-start font-bold my-2 text-gray-800">Hello!</h2>
             {user && <p className="text-sm text-start my-2  text-gray-600 mt-1">{user.name}</p>}
             <Darkmode/>
         </div>

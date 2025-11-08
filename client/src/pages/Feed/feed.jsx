@@ -14,16 +14,7 @@ function Feed() {
     fetchEQ();
   }, []);
 
-  const handleOpenLogin = () => {
-    try {
-      setOpenLogin(true);
-      setTimeout(() => {
-        navigate("/login");
-      }, 3000);
-    } catch (error) {
-      console.error("Error Opening Login");
-    }
-  };
+
 
   const fetchEQ = async () => {
     try {
@@ -37,28 +28,28 @@ function Feed() {
   };
 
   return (
-    <section className="full grid grid-cols-1fr grid-rows-[3rem_85vh] gap-4 overflow-y-hidden">
+    <section className="full grid grid-cols-1fr grid-rows-[3rem_85vh] gap-4 overflow-y-hidden gap-4">
       {/* Add Navbar at the top */}
       <div className="col-span-full row-start-1">
         <Navbar />
       </div>
 
-      <main className="full shadow-lg column-t row-start-2 row-end-3 col-start-1 col-end-1 md:col-start-2 col-span-full overflow-y-hidden">
+      <main className="center shadow-lg column-t row-start-2 row-end-3 col-start-1 col-end-1 md:col-start-2 col-span-full overflow-y-hidden">
         <nav className="w-full center h-[30%] p-2">
  
         </nav>
 
-        <div className="column-t overflow-y-auto overflow-x-auto">
-          <table className="eq-table table-fixed md:max-w-full md:w-full lg:max-w-full lg:w-full">
+        <div className="flex items-center justify-starr flex-col overflow-y-auto overflow-x-auto shadow-lg">
+          <table className="eq-table table-fixed md:max-w-full md:w-full lg:max-w-full lg:w-[90%]">
             <thead>
               <tr className="tr-th shadow-lg bg-[var(--white-blple)]">
-                <th className="p-4 font-semibold">Date Time</th>
+                <th className="p-4 font-semibold rounded-tl-xl">Date Time</th>
                 <th className="p-4 font-semibold">Depth</th>
                 <th className="p-4 font-semibold">DetailLink</th>
                 <th className="p-4 font-semibold">Latitude</th>
                 <th className="p-4 font-semibold">Location</th>
                 <th className="p-4 font-semibold">Longtitude</th>
-                <th className="p-4 font-semibold">Magnitude</th>
+                <th className="p-4 font-semibold rounded-tr-xl">Magnitude</th>
               </tr>
             </thead>
 

@@ -11,19 +11,19 @@ function EarthquakeAlertStatus() {
 
   return (
     <div className="fixed bottom-4 left-4 z-50">
-      <div className="bg-white rounded-lg shadow-lg p-4 max-w-sm">
+      <div className="container  rounded-lg shadow-lg p-4 max-w-sm">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-sm">Earthquake Alerts</span>
+            <span className="els font-semibold text-sm">Earthquake Alerts</span>
           </div>
         </div>
 
         {user?.location ? (
           <>
-            <p className="text-xs text-gray-600 mb-2">
+            <h5 className="text-xs text-gray-600 mb-2">
               Your Location: <strong>{user.location}</strong>
               <div className="mt-3 pt-3 border-t border-gray-200">
-                <p className="text-xs font-semibold text-gray-700 mb-2">
+                <p className="tl text-xs font-semibold text-gray-700 mb-2">
                   Test Alert
                 </p>
                 <button
@@ -33,7 +33,7 @@ function EarthquakeAlertStatus() {
                   Alert
                 </button>
               </div>
-            </p>
+            </h5>
           </>
         ) : (
           <p className="text-xs text-amber-600 mb-3">

@@ -25,7 +25,7 @@ export function Darkmode(){
     },[dark])
     
     return(<>
-        <div className="dmode-box center-l px-4 py-1 w-20 rounded-lg shadow-lg ">
+        <div className="dmode-box center-l px-4 py-1 w-20 rounded-lg shadow-lg px-2 py-2">
             <button onClick={() => setDark(!dark)} 
             className="dmode-btn w-5 h-5 rounded-full cursor-pointer">{!dark ? <Sun className="sun"/> : <MoonStar className="moonstar"/> }</button>
         </div>  

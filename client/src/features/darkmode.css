@@ -55,10 +55,40 @@ body.dark span{
     @apply text-[var(--main-white)]
 }
 body.dark label{
-    @apply text-[var(--main-white)]
+    @apply text-[var(--main-white)] bg-[var(--metal-dark5)];
+}
+body.dark label{
+    @apply text-[var(--main-white)] bg-[var(--metal-dark5)];
+}
+body.dark a{
+    @apply text-[var(--main-white)] ;
+}
+body.dark select{
+    @apply text-[var(--main-white)];
+}
+body.dark .logo-text{
+    @apply  text-[var(--main-white)];
+}
+body.dark h5{
+    @apply text-[var(--main-white)];
+}
+body.dark .els{
+    @apply  text-[var(--main-white)];
+}
+body.dark .tl {
+    @apply text-[var(--main-white)];
+}
+body.dark .account-settings{
+    @apply text-[var(--main-white)];
 }
 
 
+body.dark .modal-header{
+    @apply bg-[var(--metal-dark2)];
+}
+body.dark input{
+    @apply text-[var(--main-white)]
+}
 
 
 body.dark .sb-links{

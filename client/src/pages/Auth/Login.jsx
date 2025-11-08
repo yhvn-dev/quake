@@ -24,6 +24,7 @@ function Login() {
   const [resendLoading, setResendLoading] = useState(false);
   const [infoMessage, setInfoMessage] = useState("");
 
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -80,6 +81,7 @@ function Login() {
       localStorage.setItem("token", response.token);
       localStorage.setItem("user", JSON.stringify(response.user));
       setShowModal(false);
+  
       navigate("/");
     } catch (err) {
       setError(

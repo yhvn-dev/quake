@@ -4,6 +4,7 @@ import * as reportsController from "../controller/reportsController.js"
 const router = express.Router()
 
 router.get("/get/reports",reportsController.selectReports)
+router.get("/get/reports/count",reportsController.getReportsCount)
 router.post("/post/reports",reportsController.insertReports)
 router.put("/put/reports/:report_id",reportsController.updateReports)
 router.delete("/delete/reports/:report_id",reportsController.deleteReports)

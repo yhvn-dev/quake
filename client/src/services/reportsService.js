@@ -42,6 +42,18 @@ export const UpdateReports = async (reportData,report_id) =>{
     }
 }
 
+export const CountReports = async () =>{
+    try {
+        const res = await api.get(`http://localhost:5000/api/reports/get/reports/count`)
+        const totalCounts = res.data.data
+
+        return totalCounts 
+    } catch (error) {
+        console.error("Error Counting Reports")
+        throw error
+    }
+}
+
 export const deleteReports = async (report_id) =>{
     try {
         const res = await api.delete(`http://localhost:5000/api/reports/delete/reports/${report_id}`)

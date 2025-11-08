@@ -47,6 +47,7 @@ async function fetchEarthquakeData() {
     // Find all tables
     const allTables = $("table.MsoNormalTable");
 
+    
     // Find the table with earthquake data (has Date-Time header)
     let dataTable = null;
     allTables.each((i, table) => {

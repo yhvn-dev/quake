@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
+import DashboardSidebar   from "../../components/DashboardSidebar"
 import {
   updateUserProfile,
   getPhilippineLocations,
@@ -23,11 +24,6 @@ function Settings() {
   const [selectedRegion, setSelectedRegion] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ type: "", text: "" });
-  const [showPasswords, setShowPasswords] = useState({
-    current: false,
-    new: false,
-    confirm: false,
-  });
 
   useEffect(() => {
     if (user) {
@@ -99,8 +95,6 @@ function Settings() {
     setLoading(true);
     setMessage({ type: "", text: "" });
 
-
-
     try {
       const updateData = {
         name: formData.name,
@@ -108,8 +102,7 @@ function Settings() {
         location: formData.location,
       };
 
-   
-
+  
       const response = await updateUserProfile(updateData);
 
       setMessage({ type: "success", text: "Profile updated successfully" });
@@ -129,26 +122,31 @@ function Settings() {
 
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">
-        Account Settings
-      </h1>
+    <div className="w-screen h-screen section bg-[var(--main-white)] h-screen w-screen flex gap-4 flex-col overflow-y-hidden grid grid-cols-[1fr_9fr]
+     grid-rows-[2fr_3fr_5fr]">
+      
+        <DashboardSidebar />
 
-      {message.text && (
-        <div
-          className={`p-4 mb-6 rounded-lg ${
-            message.type === "success"
-              ? "bg-green-50 text-green-700"
-              : "bg-red-50 text-red-700"
-          }`}
-        >
-          {message.text}
-        </div>
-      )}
+        <main className="col-start-2 col-span-full row-start-1 px-0 py-4 row-span-full">
+          <h1 className="account-settings text-3xl font-bold text-gray-800 mb-6">
+            Account Settings
+          </h1>
+
+          {message.text && (
+            <div
+              className={`p-4 mb-6 rounded-lg ${
+                message.type === "success"
+                  ? "bg-green-50 text-green-700"
+                  : "bg-red-50 text-red-700"
+              }`}
+            >
+              {message.text}
+            </div>
+          )}
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-lg p-6 space-y-6"
+        className="container bg-white shadow-md rounded-lg p-6 space-y-6"
       >
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -186,7 +184,7 @@ function Settings() {
             <select
               value={selectedRegion}
               onChange={handleRegionChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--moon-phases-d)] focus:border-transparent"
+              className="select w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--moon-phases-d)] focus:border-transparent"
             >
               <option value="">Select Region</option>
               {regions.map((region) => (
@@ -200,7 +198,7 @@ function Settings() {
               value={formData.location.split(", ")[1] || ""}
               onChange={handleCityChange}
               disabled={!selectedRegion}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--moon-phases-d)] focus:border-transparent disabled:bg-gray-100"
+              className="select w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--moon-phases-d)] focus:border-transparent disabled:bg-gray-100"
             >
               <option value="">Select City</option>
               {cities.map((city) => (
@@ -239,8 +237,10 @@ function Settings() {
           </button>
         </div>
       </form>
+      </main>
 
       {<EarthquakeAlertStatus/>}
+      
     </div>
   );
 }
