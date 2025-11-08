@@ -4,6 +4,8 @@ import {
   updateUserProfile,
   getPhilippineLocations,
 } from "../../services/userService";
+import EarthquakeAlertStatus from "../../components/EarthquakeAlertStatus"
+
 import { Save, Loader2, Eye, EyeOff } from "lucide-react";
 
 function Settings() {
@@ -351,6 +353,8 @@ function Settings() {
           </button>
         </div>
       </form>
+
+      {<EarthquakeAlertStatus/>}
     </div>
   );
 }

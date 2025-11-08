@@ -26,13 +26,10 @@ function App() {
 
             {/* Dashboard routes with nested routes */}
             <Route path="/dashboard" element={<Dashboard />}>
-              <Route
-                index
-                element={<Navigate to="/dashboard/report" replace />}
-              />
-              <Route path="report" element={<Report />} />
-              <Route path="settings" element={<Settings />} />
+            
             </Route>
+
+              <Route path="settings" element={<Settings />} />
           </Routes>
         </BrowserRouter>
 

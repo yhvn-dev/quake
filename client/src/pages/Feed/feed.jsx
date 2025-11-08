@@ -37,23 +37,15 @@ function Feed() {
   };
 
   return (
-    <section className="full grid grid-cols-1fr grid-rows-[3rem_5rem_75vh] gap-4 overflow-y-hidden">
+    <section className="full grid grid-cols-1fr grid-rows-[3rem_85vh] gap-4 overflow-y-hidden">
       {/* Add Navbar at the top */}
       <div className="col-span-full row-start-1">
         <Navbar />
       </div>
 
-      <main className="full shadow-lg column-t row-start-3 row-end-3 col-start-1 col-end-1 md:col-start-2 col-span-full overflow-y-hidden">
+      <main className="full shadow-lg column-t row-start-2 row-end-3 col-start-1 col-end-1 md:col-start-2 col-span-full overflow-y-hidden">
         <nav className="w-full center h-[30%] p-2">
-          <div className="full center-l">EarthQuakes</div>
-          <div className="full flex items-center justify-start flex-row-reverse">
-            <button
-              onClick={handleOpenLogin}
-              className='shadog-lg px-4 py-2 cursor-pointer rounded-xl center hover:bg-[var(--moon-phases-e)] bg-[var(--moon-phases-d)] stroke="#fff"'
-            >
-              <Plus size={18} fill="#fff" />
-            </button>
-          </div>
+ 
         </nav>
 
         <div className="column-t overflow-y-auto overflow-x-auto">

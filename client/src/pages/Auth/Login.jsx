@@ -80,7 +80,7 @@ function Login() {
       localStorage.setItem("token", response.token);
       localStorage.setItem("user", JSON.stringify(response.user));
       setShowModal(false);
-      navigate("/dashboard");
+      navigate("/");
     } catch (err) {
       setError(
         err.response?.data?.message || "Invalid code. Please try again."

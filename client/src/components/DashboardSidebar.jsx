@@ -21,7 +21,7 @@ function DashboardSidebar() {
 
       <nav className="flex-1 p-4">
         <NavLink
-          to="/dashboard/report"
+          to="/dashboard"
           className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
               isActive
@@ -35,7 +35,7 @@ function DashboardSidebar() {
         </NavLink>
 
         <NavLink
-          to="/dashboard/settings"
+          to="/settings"
           className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
               isActive

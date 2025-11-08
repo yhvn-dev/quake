@@ -11,7 +11,7 @@ function Navbar() {
   const isDashboardActive = location.pathname.startsWith("/dashboard");
 
   return (
-    <nav className="w-full h-full flex items-center justify-between px-6 bg-white shadow-lg">
+    <nav className="w-full h-full flex items-center justify-between px-6 bg-white ">
       <div
         className="flex items-center gap-2 cursor-pointer"
         onClick={() => navigate("/")}
