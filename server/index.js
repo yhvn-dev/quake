@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import eqRoutes from "./routes/eqRoutes.js"
+import eqReports from "./routes/reportRoutes.js"
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+app.use("/api/reports", eqReports);
 app.use("/api/auth", authRoutes);
 app.use("/api/eq",eqRoutes)
 
@@ -21,6 +23,7 @@ app.use("/api/eq",eqRoutes)
 app.get("/api/health", (req, res) => {
   res.json({ status: "Server is running" });
 });
+
 
 // Start server
 app.listen(PORT, () => {
